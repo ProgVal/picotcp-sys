@@ -8,8 +8,7 @@ repository = "https://github.com/ProgVal/picotcp-sys"
 readme = "README.md"
 
 build = "build.rs"
-include = [ "picotcp/*" ]
-exclude = [ "picotcp.rs" ] # Generated
+include = [ "picotcp/*", "Cargo.toml", "README.md", "build.rs" ]
 
 [lib]
 path = "picotcp.rs"
