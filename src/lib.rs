@@ -1,6 +1,1 @@
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {
-    }
-}
+include!(concat!(env!("OUT_DIR"), "/picotcp.rs"));

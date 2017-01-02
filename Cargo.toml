@@ -2,5 +2,18 @@
 name = "picotcp-sys"
 version = "0.1.0"
 authors = ["Valentin Lorentz <progval+git@progval.net>"]
+description = "Rust binding of picoTCP"
+license = "GPL-2.0"
+repository = "https://github.com/ProgVal/picotcp-sys"
+readme = "README.md"
 
-[dependencies]
+build = "build.rs"
+include = [ "picotcp/*" ]
+exclude = [ "picotcp.rs" ] # Generated
+
+[lib]
+path = "picotcp.rs"
+
+[build-dependencies]
+bindgen = "0.19.1"
+
