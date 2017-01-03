@@ -24,6 +24,7 @@ fn generate_bindings(out_file: &mut File, header_path: &Path) {
     let mut bindings = Builder::new(header_path);
     bindings.builtins();
     bindings.forbid_unknown_types();
+    bindings.convert_macros(true);
     // bindings.link("picotcp", bindgen::LinkType::Static);
     // bindings.clang_arg("-L").clang_arg(picotcp_lib.to_str().expect("Could not decode Path to String"));
     let generated_bindings = bindings.generate().expect(&format!("Failed to generate bindings for {}", header_path));
