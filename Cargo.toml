@@ -1,6 +1,6 @@
 [package]
 name = "picotcp-sys"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["Valentin Lorentz <progval+git@progval.net>"]
 description = "Rust binding of picoTCP"
 license = "GPL-2.0"
