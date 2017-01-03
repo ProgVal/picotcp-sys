@@ -10,7 +10,8 @@ cargo build
 
 If you have an error similar to this:
 
-```thread 'main' panicked at 'Failed to generate bindings for /home/user/picotcp-sys/target/debug/build/picotcp-sys-cd06b602a1ad2b2a/out/picotcp/include/pico_dev_vde.h: ()', src/
+```
+thread 'main' panicked at 'Failed to generate bindings for /home/user/picotcp-sys/target/debug/build/picotcp-sys-cd06b602a1ad2b2a/out/picotcp/include/pico_dev_vde.h: ()', src/
 libcore/result.rs:799
 ```
 
