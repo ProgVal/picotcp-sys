@@ -11,11 +11,12 @@ use std::process::Command;
 use bindgen::Builder;
 
 /// Run picoTCP's Makefile
-fn build_picotcp(prefix: &Path) {
+fn build_picotcp(prefix: &Path, debug: bool) {
     println!("Building picotcp to: {}", prefix.to_string_lossy());
     Command::new("make")
             .arg("-C").arg("picotcp") // $RUSTOTCP_SOURCE/picotcp/
             .env("PREFIX", prefix.as_os_str())
+            .env("DEBUG", if debug { "1" } else { "0" })
             .status().unwrap();
 }
 
@@ -63,6 +64,7 @@ fn link_picotcp(picotcp_lib_dir: &Path) {
 
 fn main() {
     let out_dir = env::var("OUT_DIR").unwrap();
+    let debug = env::var("DEBUG").unwrap_or("false".to_owned()) == "true";
     let out_dir = Path::new(&out_dir).to_path_buf();
     let out_file_path: PathBuf = Path::new("picotcp.rs").to_path_buf();
     let picotcp_prefix: PathBuf = { let mut p = out_dir.clone(); p.push("picotcp"); p };
@@ -71,7 +73,7 @@ fn main() {
     let picotcp_lib_dir: PathBuf = { let mut p = picotcp_prefix.clone(); p.push("lib"); p };
     let mut out_file = File::create(out_file_path).expect("Failed to open file");
 
-    build_picotcp(picotcp_prefix.as_path());
+    build_picotcp(picotcp_prefix.as_path(), debug);
 
     {
         let mut includer_file = File::create(includer_file_path.as_path()).expect("Failed to open file");
